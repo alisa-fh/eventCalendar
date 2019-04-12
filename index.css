@@ -1,0 +1,38 @@
+.card-button {
+    background-color: #B9B7A7;
+    border-color: #B9B7A7;
+    color: black;
+}
+
+.btn-outline-success {
+    border-color: #B9B7A7;
+    color: #B9B7A7;
+}
+
+.row {
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.card-body {
+    background-color: #7C90A0;
+}
+
+.card-header {
+    background-color:#5486ad;
+}
+
+body {
+    background-color: #B9B7A7;
+}
+
+.card {
+    border-color: #5486ad;
+}
+
+.carousel {
+    position: relative;
+
+    left: 350px;
+    bottom: 380px;
+}
