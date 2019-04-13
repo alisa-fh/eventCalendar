@@ -1,7 +1,11 @@
+body {
+    position: relative;
+}
+
 .card-button {
-    background-color: #B9B7A7;
-    border-color: #B9B7A7;
-    color: black;
+    background-color: #747274;
+    border-color: #747274;
+    color: white;
 }
 
 .btn-outline-success {
@@ -35,4 +39,24 @@ body {
 
     left: 350px;
     bottom: 380px;
+}
+
+.scrollspy-example {
+    position: relative;
+    overflow-y: scroll;
+    height: 400px;
+}
+
+.affix {
+    top:20px;
+    z-index:9999 !important;;
+}
+
+#section1, #section2  {
+    margin-left: 150px;
+}
+
+.container {
+    margin-left: -10px;
+    margin-right: -10px;
 }
