@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <title>Login page</title>
+</head>
+<body>
+
+<div class="content">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Auth0 - JavaScript</a>
+
+                <button id="btn-home-view" class="btn btn-primary btn-margin">
+                    Home
+                </button>
+
+                <button id="btn-login" class="btn btn-primary btn-margin">
+                    Log In
+                </button>
+
+                <button id="btn-logout" class="btn btn-primary btn-margin">
+                    Log Out
+                </button>
+
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- home view -->
+        <div id="home-view">
+            <h4></h4>
+        </div>
+
+    </main>
+
+</div>
+
+<script type="text/javascript" src="node_modules/auth0-js/build/auth0.js"></script>
+<script src="auth0-variables.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
