@@ -34,7 +34,7 @@
         </nav>
         <div class="col-sm-4">
             <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example">
-                <div class="row justify-content-center">
+                <div id="eventCardCollection" class="row justify-content-center">
                     <div class = "col-auto mb-3" id="list-item-1">
                             <div class = "card" style ="width:18rem">
                                 <div class="card-header">
@@ -135,8 +135,8 @@
                         <input type="text" name="location" class="form-control" id="aLocation" placeholder="Location" required>
                     </div>
                     <div class="row">
-                        <label for="aTime" class="col-form-label">Time</label>
-                        <input type="time" name="time" class="form-control" id="aTime" value="19:00:00" required>
+                        <label for="aDateTime" class="col-form-label">Date and Time</label>
+                        <input type="datetime-local" name="aDateTime" class="form-control" id="aDateTime" value="2020-08-19T13:45:00" required>
                     </div>
                 </div>
                 <div class="col-md-3 mb-3 ml-3">
@@ -158,18 +158,18 @@
                 <div class="form-row">
                     <div class="col-md-3 mb-3">
                         <label for="fullName">Full Name</label>
-                        <input type="text" class="form-control" id="fullName" placeholder="Full Name" value="John Appleseed" required>
+                        <input type="text" class="form-control" id="fullName" placeholder="Full Name" name = "fullname" value="John Appleseed" required>
                     </div>
                     <div class="form-group col-md-3 mb-3 ml-3">
                         <label for="personDesc">Description</label>
-                        <textarea class="form-control" id="personDesc" rows="5" required></textarea>
+                        <textarea class="form-control" id="personDesc" rows="5" name="description" required></textarea>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class = "col-md-3 mb-3">
                         <div class="row">
                             <label for="personDOB">Date of birth</label>
-                            <input type="date" class="form-control" id="personDOB" placeholder="Date of Birth" required>
+                            <input type="date" class="form-control" name="dob" id="personDOB" placeholder="Date of Birth" required>
                         </div>
                     </div>
                     <button class="btn btn-primary ml-1" type="submit">Create Event</button>
