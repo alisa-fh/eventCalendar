@@ -1,15 +1,16 @@
 var express = require('express');
 var app = express();
 app.use(express.urlencoded());
+app.use(express.static('client'));
 var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({extended:false});
 app.use(bodyParser.urlencoded({extended:false}));
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 var fs = require('fs');
 var eventData = require('./eventData.json');
-var peopleData = require('./peopleData.json')
+var peopleData = require('./peopleData.json');
 
-app.post('/newevent', urlencodedParser, function(req, resp){
+app.post('/newevent', urlencodedParser,  async function(req, resp){
     var anEvent = new Object();
     console.log(req.body);
     anEvent.eventName = req.body.eventName;
@@ -21,7 +22,8 @@ app.post('/newevent', urlencodedParser, function(req, resp){
     eventData.forEach(function(item, index, array){
         console.log(item.eventName)
     })
-    fs.readFile('eventData.json', 'utf8', function readFileCallback(err, data) {
+
+    await fs.readFile('eventData.json', 'utf8',  function readFileCallback(err, data) {
         if (err){
             console.log(err);
         } else {
@@ -30,10 +32,11 @@ app.post('/newevent', urlencodedParser, function(req, resp){
             json = JSON.stringify(obj); //convert it back to json
             fs.writeFile('eventData.json', json, 'utf8', callback); // write it back
         }
+
     })
 
     console.log('form submitted ' + req.body.eventName);
-    resp.send('form submitted 1 ' + anEvent);
+    //resp.send('form submitted 1 ' + anEvent);
 })
 
 function callback(err, data) {
@@ -53,7 +56,7 @@ app.post('/newperson', urlencodedParser, function(req, resp){
     peopleData.push(aPerson);
     peopleData.forEach(function(item, index, array){
         console.log(item.fullname)
-    })
+    });
     fs.readFile('peopleData.json', 'utf8', function readFileCallback(err, data) {
         if (err){
             console.log(err);
@@ -63,11 +66,36 @@ app.post('/newperson', urlencodedParser, function(req, resp){
             json = JSON.stringify(obj); //convert it back to json
             fs.writeFile('peopleData.json', json, 'utf8', callback); // write it back
         }
-    })
+    });
 
     console.log('form submitted ' + req.body.fullname);
     resp.send('form submitted 1 ' + aPerson);
-})
+});
+
+app.get('/refresh', function(req, resp) {
+    try {
+        var eventJSON = JSON.parse(eventData);
+        resp.send(eventJSON);
+    } catch(err) {
+        resp.status(400).send('');
+    }
+});
+
+
+/*<a class="list-group-item list-group-item-action" href="#list-item-a">Ali'sa's Partay</a>*/
+
+/*<div class = "col-auto mb-3" id="list-item-1">
+    <div class = "card" style ="width:18rem">
+    <div class="card-header">
+    5th March 2019
+</div>
+<div class = "card-body">
+    <h5 class = "card-title">Ali'sa's Partay</h5>
+<p class="card-text">This party bangs. exclusives only.</p>
+<a href="#" class = "btn btn-primary card-button">Click here to see those invited.</a>
+</div>
+</div>
+</div>*/
 
 
 
