@@ -1,14 +1,22 @@
+/*things to do:
+* -create function that fills invitees box with people
+* -call above function on page loading and creating event
+* -on clicking a card button, get people from event and on client side fill in the carousel
+* -search events and display relevant cards
+* -set default values for people on carousel*/
+
+
 var express = require('express');
 var app = express();
-app.use(express.urlencoded());
 app.use(express.static('client'));
+app.use(express.urlencoded());
 var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({extended:false});
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 var fs = require('fs');
-var eventData = require('./eventData.json');
-var peopleData = require('./peopleData.json');
+var eventData = require('./client/eventData.json');
+var peopleData = require('./client/peopleData.json');
 
 app.post('/newevent', urlencodedParser,  async function(req, resp){
     var anEvent = new Object();
@@ -33,10 +41,11 @@ app.post('/newevent', urlencodedParser,  async function(req, resp){
             fs.writeFile('eventData.json', json, 'utf8', callback); // write it back
         }
 
-    })
+    });
 
     console.log('form submitted ' + req.body.eventName);
-    //resp.send('form submitted 1 ' + anEvent);
+    alert("An event has been added- click refresh to display all events.")
+    resp.status(204).send();
 })
 
 function callback(err, data) {
@@ -74,9 +83,10 @@ app.post('/newperson', urlencodedParser, function(req, resp){
 
 app.get('/refresh', function(req, resp) {
     try {
-        var eventJSON = JSON.parse(eventData);
-        resp.send(eventJSON);
+        resp.send(eventData);
+
     } catch(err) {
+        console.log('error in refresh')
         resp.status(400).send('');
     }
 });
@@ -96,7 +106,5 @@ app.get('/refresh', function(req, resp) {
 </div>
 </div>
 </div>*/
-
-
 
 app.listen(8090);
